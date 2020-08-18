@@ -12,12 +12,14 @@ fi
 
 read -p 'Type the component name in title case, with spaces between words. ' nameTitleCase
 
+nameLowerCase="$(tr '[:upper:]' '[:lower:]' <<< ${nameTitleCase})"
 namePascalCase=$(tr -d ' ' <<< $nameTitleCase)
 nameCamelCase="$(tr '[:upper:]' '[:lower:]' <<< ${namePascalCase:0:1})${namePascalCase:1}"
 nameKebabCase="$(echo $nameTitleCase | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
 nameSnakeCase="$(echo $nameKebabCase | tr '-' '_')"
 
 placeholderTitleCase="Component Name"
+placeholderLowerCase="component name"
 placeholderPascalCase="ComponentName"
 placeholderCamelCase="componentName"
 placeholderKebabCase="component-name"
@@ -27,6 +29,7 @@ cp -r "$dir" "${dest}/${nameKebabCase}"
 cd "./${nameKebabCase}"
 
 sed -i '' "s/${placeholderTitleCase}/${nameTitleCase}/g" ./*
+sed -i '' "s/${placeholderLowerCase}/${nameLowerCase}/g" ./*
 sed -i '' "s/${placeholderPascalCase}/${namePascalCase}/g" ./*
 sed -i '' "s/${placeholderCamelCase}/${nameCamelCase}/g" ./*
 sed -i '' "s/${placeholderKebabCase}/${nameKebabCase}/g" ./*
