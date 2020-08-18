@@ -25,8 +25,9 @@ placeholderCamelCase="componentName"
 placeholderKebabCase="component-name"
 placeholderSnakeCase="component_name"
 
-cp -r "$dir" "${dest}/${nameKebabCase}"
+mkdir "./${nameKebabCase}"
 cd "./${nameKebabCase}"
+cp "${dir}/"* ./
 
 sed -i '' "s/${placeholderTitleCase}/${nameTitleCase}/g" ./*
 sed -i '' "s/${placeholderLowerCase}/${nameLowerCase}/g" ./*
