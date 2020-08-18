@@ -22,11 +22,6 @@ placeholderPascalCase="ComponentName"
 placeholderCamelCase="componentName"
 placeholderKebabCase="component-name"
 placeholderSnakeCase="component_name"
-echo "$nameTitleCase"
-echo "$namePascalCase"
-echo "$nameCamelCase"
-echo "$nameKebabCase"
-echo "$nameSnakeCase"
 
 cp -r "$dir" "${dest}/${nameKebabCase}"
 cd "./${nameKebabCase}"
@@ -42,4 +37,4 @@ find . -type f -name "${placeholderKebabCase}*" | while read FILE ; do
   mv "${FILE}" "${newfile}" ;
 done
 
-rm -f new-component.sh
+rm -f new-component
